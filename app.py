@@ -67,13 +67,13 @@ def webhook():
             diseases_data = fetch_json(DISEASES_URL)
             disease_key = find_disease_key(disease_input, diseases_data)
             if disease_key:
-                if intent in ["ask_symptoms", "disease_info"]:
+                if intent in ["ask_symptoms", "diseases_info"]:
                     symptoms = get_symptoms(disease_key)
                     if symptoms:
                         response_text = f"ðŸ¤’ Symptoms of {disease_key}: {', '.join(symptoms)}."
                     else:
                         response_text = f"Sorry, symptoms for {disease_key} are not available."
-                if intent in ["ask_preventions", "disease_info"]:
+                if intent in ["ask_preventions", "diseases_info"]:
                     preventions = get_preventions(disease_key)
                     if preventions:
                         response_text += f"\nðŸ›¡ Prevention measures: {', '.join(preventions)}"
