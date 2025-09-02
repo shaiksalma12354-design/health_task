@@ -57,8 +57,8 @@ def webhook():
         params = req.get("queryResult", {}).get("parameters", {})
 
         disease_input = None
-        if params.get("diseases"):
-            disease_input = params["diseases"]
+        if params.get("disease_sss"):
+            disease_input = params["disease_sss"]
 
         response_text = "Sorry, I could not find information for that disease."
 
