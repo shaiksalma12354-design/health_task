@@ -6,7 +6,7 @@ app = Flask(__name__)
 # JSON file links (replace with your actual links)
 DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
-PREVENTIONS_URL = "https://raw.githubusercontent.com/your-username/your-repo/main/preventions.json"
+PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
 
 
 def load_json_from_url(url):
