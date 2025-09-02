@@ -23,7 +23,6 @@ def webhook():
     parameters = req.get("queryResult", {}).get("parameters", {})
 
     disease_name = parameters.get("disease_sss")
-    response_text = "Sorry, I couldn't find information."
 
     if disease_name:
         disease_name = disease_name.lower()
