@@ -1,84 +1,46 @@
-{
-  [
-    {
-      "name": "Diabetes Mellitus",
-      "synonyms": ["Diabetes", "Sugar disease", "High blood sugar"]
-    },
-    {
-      "name": "Hypertension",
-      "synonyms": ["High blood pressure", "BP", "Hypertensive disease"]
-    },
-    {
-      "name": "Asthma",
-      "synonyms": ["Breathing problem", "Wheezing", "Bronchial asthma"]
-    },
-    {
-      "name": "Tuberculosis",
-      "synonyms": ["TB", "Mycobacterium infection", "Pulmonary tuberculosis"]
-    },
-    {
-      "name": "Influenza",
-      "synonyms": ["Flu", "Grip", "Seasonal flu"]
-    },
-    {
-      "name": "COVID-19",
-      "synonyms": ["Coronavirus", "SARS-CoV-2 infection", "Corona"]
-    },
-    {
-      "name": "Pneumonia",
-      "synonyms": ["Lung infection", "Chest infection", "Pulmonary infection"]
-    },
-    {
-      "name": "Malaria",
-      "synonyms": ["Plasmodium infection", "Malarial fever"]
-    },
-    {
-      "name": "Dengue",
-      "synonyms": ["Breakbone fever", "Dengue fever"]
-    },
-    {
-      "name": "Cholera",
-      "synonyms": ["Vibrio infection", "Severe diarrhea disease"]
-    },
-    {
-      "name": "Hepatitis B",
-      "synonyms": ["HBV infection", "Hep B"]
-    },
-    {
-      "name": "Hepatitis C",
-      "synonyms": ["HCV infection", "Hep C"]
-    },
-    {
-      "name": "HIV/AIDS",
-      "synonyms": ["Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
-    },
-    {
-      "name": "Typhoid",
-      "synonyms": ["Enteric fever", "Salmonella infection"]
-    },
-    {
-      "name": "Measles",
-      "synonyms": ["Rubeola", "Morbilli"]
-    },
-    {
-      "name": "Chickenpox",
-      "synonyms": ["Varicella", "Waterpox"]
-    },
-    {
-      "name": "Leprosy",
-      "synonyms": ["Hansen's disease", "Mycobacterium leprae infection"]
-    },
-    {
-      "name": "Rabies",
-      "synonyms": ["Hydrophobia", "Lyssavirus infection"]
-    },
-    {
-      "name": "Meningitis",
-      "synonyms": ["Brain fever", "Inflammation of meninges"]
-    },
-    {
-      "name": "Arthritis",
-      "synonyms": ["Joint inflammation", "Rheumatic disease"]
-    }
-  ]
-}
+[
+  {
+    "value": "Flu",
+    "synonyms": ["Influenza", "the flu", "grippe"]
+  },
+  {
+    "value": "Cold",
+    "synonyms": ["Common Cold", "runny nose", "sore throat"]
+  },
+  {
+    "value": "Diabetes",
+    "synonyms": ["High blood sugar", "Sugar disease", "diabetes mellitus"]
+  },
+  {
+    "value": "Asthma",
+    "synonyms": ["breathing problem", "asthmatic", "bronchial asthma"]
+  },
+  {
+    "value": "Allergy",
+    "synonyms": ["Allergic reaction", "sensitivity", "hay fever"]
+  },
+  {
+    "value": "Headache",
+    "synonyms": ["Migraine", "pain in the head", "head pain"]
+  },
+  {
+    "value": "Fever",
+    "synonyms": ["High temperature", "temperature", "hot body"]
+  },
+  {
+    "value": "Stomach ache",
+    "synonyms": ["Abdominal pain", "belly ache", "stomach pain"]
+  },
+  {
+    "value": "Back pain",
+    "synonyms": ["Lower back pain", "backache", "spine pain"]
+  },
+  {
+    "value": "Cough",
+    "synonyms": ["dry cough", "wet cough", "throat irritation"]
+  },
+  {
+    "value": "COVID-19",
+    "synonyms": ["Coronavirus", "covid", "corona virus"]
+  }
+]
