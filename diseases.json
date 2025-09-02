@@ -1,46 +1,62 @@
-[
-  {
-    "value": "Flu",
-    "synonyms": ["Influenza", "the flu", "grippe"]
+{
+  "Malaria": {
+    "synonyms": ["Plasmodium infection", "Mosquito fever"]
   },
-  {
-    "value": "Cold",
-    "synonyms": ["Common Cold", "runny nose", "sore throat"]
+  "Tuberculosis": {
+    "synonyms": ["TB", "Consumption", "Phthisis"]
   },
-  {
-    "value": "Diabetes",
-    "synonyms": ["High blood sugar", "Sugar disease", "diabetes mellitus"]
+  "Diabetes": {
+    "synonyms": ["Diabetes mellitus", "High blood sugar", "Sugar disease"]
   },
-  {
-    "value": "Asthma",
-    "synonyms": ["breathing problem", "asthmatic", "bronchial asthma"]
+  "Hypertension": {
+    "synonyms": ["High blood pressure", "HBP"]
   },
-  {
-    "value": "Allergy",
-    "synonyms": ["Allergic reaction", "sensitivity", "hay fever"]
+  "Influenza": {
+    "synonyms": ["Flu", "Grippe"]
   },
-  {
-    "value": "Headache",
-    "synonyms": ["Migraine", "pain in the head", "head pain"]
+  "COVID-19": {
+    "synonyms": ["Coronavirus", "SARS-CoV-2 infection", "Corona virus disease"]
   },
-  {
-    "value": "Fever",
-    "synonyms": ["High temperature", "temperature", "hot body"]
+  "Dengue": {
+    "synonyms": ["Dengue fever", "Breakbone fever"]
   },
-  {
-    "value": "Stomach ache",
-    "synonyms": ["Abdominal pain", "belly ache", "stomach pain"]
+  "Cholera": {
+    "synonyms": ["Asiatic cholera", "Vibrio cholerae infection"]
   },
-  {
-    "value": "Back pain",
-    "synonyms": ["Lower back pain", "backache", "spine pain"]
+  "Hepatitis B": {
+    "synonyms": ["HBV infection", "Serum hepatitis"]
   },
-  {
-    "value": "Cough",
-    "synonyms": ["dry cough", "wet cough", "throat irritation"]
+  "Measles": {
+    "synonyms": ["Rubeola", "Red measles"]
   },
-  {
-    "value": "COVID-19",
-    "synonyms": ["Coronavirus", "covid", "corona virus"]
+  "Chickenpox": {
+    "synonyms": ["Varicella", "Varicella-zoster virus infection"]
+  },
+  "Mumps": {
+    "synonyms": ["Epidemic parotitis"]
+  },
+  "Polio": {
+    "synonyms": ["Poliomyelitis", "Infantile paralysis"]
+  },
+  "Typhoid": {
+    "synonyms": ["Enteric fever", "Salmonella typhi infection"]
+  },
+  "Ebola": {
+    "synonyms": ["Ebola virus disease", "EVD"]
+  },
+  "Zika virus": {
+    "synonyms": ["Zika fever"]
+  },
+  "HIV/AIDS": {
+    "synonyms": ["Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
+  },
+  "Pneumonia": {
+    "synonyms": ["Lung infection", "Pulmonary infection"]
+  },
+  "Asthma": {
+    "synonyms": ["Reactive airway disease", "Bronchial asthma"]
+  },
+  "Common cold": {
+    "synonyms": ["Cold", "Upper respiratory infection", "URI"]
   }
-]
+}
