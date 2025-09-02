@@ -1,56 +1,84 @@
 {
   "diseases": [
-    { "name": "Diabetes Mellitus", "synonyms": ["Diabetes", "Sugar disease", "High blood sugar"] },
-    { "name": "Hypertension", "synonyms": ["High blood pressure", "BP", "Hypertensive disease"] },
-    { "name": "Asthma", "synonyms": ["Breathing problem", "Wheezing", "Bronchial asthma"] },
-    { "name": "Tuberculosis", "synonyms": ["TB", "Pulmonary TB", "Koch’s disease"] },
-    { "name": "Influenza", "synonyms": ["Flu", "Seasonal flu", "Grippe"] },
-    { "name": "COVID-19", "synonyms": ["Coronavirus", "Corona", "Novel corona"] },
-    { "name": "Malaria", "synonyms": ["Plasmodium infection", "Malarial fever"] },
-    { "name": "Typhoid fever", "synonyms": ["Enteric fever", "Salmonella infection"] },
-    { "name": "Hepatitis B", "synonyms": ["Hep B", "Serum hepatitis"] },
-    { "name": "Hepatitis C", "synonyms": ["Hep C", "Chronic hepatitis"] },
-    { "name": "Dengue fever", "synonyms": ["Breakbone fever", "DENV infection"] },
-    { "name": "Chikungunya", "synonyms": ["CHIKV infection", "Viral fever joint pain"] },
-    { "name": "Measles", "synonyms": ["Rubeola", "Morbillivirus infection"] },
-    { "name": "Chickenpox", "synonyms": ["Varicella", "VZV infection"] },
-    { "name": "Mumps", "synonyms": ["Parotitis", "Epidemic parotitis"] },
-    { "name": "Pneumonia", "synonyms": ["Lung infection", "Chest infection"] },
-    { "name": "Bronchitis", "synonyms": ["Airway infection", "Lung inflammation"] },
-    { "name": "COPD", "synonyms": ["Chronic Obstructive Pulmonary Disease", "Chronic bronchitis", "Emphysema"] },
-    { "name": "Cancer", "synonyms": ["Malignancy", "Tumor", "Carcinoma"] },
-    { "name": "Leukemia", "synonyms": ["Blood cancer", "Bone marrow cancer"] },
-    { "name": "Stroke", "synonyms": ["Brain attack", "Cerebrovascular accident", "CVA"] },
-    { "name": "Heart Attack", "synonyms": ["Myocardial infarction", "MI", "Cardiac arrest"] },
-    { "name": "Migraine", "synonyms": ["Severe headache", "Vascular headache"] },
-    { "name": "Epilepsy", "synonyms": ["Seizure disorder", "Fits"] },
-    { "name": "Arthritis", "synonyms": ["Joint pain", "Osteoarthritis", "Rheumatoid arthritis"] },
-    { "name": "Parkinson’s Disease", "synonyms": ["Shaking palsy", "PD"] },
-    { "name": "Alzheimer’s Disease", "synonyms": ["Dementia", "Memory loss disease"] },
-    { "name": "HIV/AIDS", "synonyms": ["HIV infection", "AIDS", "Acquired Immunodeficiency Syndrome"] },
-    { "name": "Polio", "synonyms": ["Poliomyelitis", "Infantile paralysis"] },
-    { "name": "Obesity", "synonyms": ["Overweight", "Excess weight", "Fatness"] },
-    { "name": "Depression", "synonyms": ["Major depressive disorder", "MDD", "Low mood"] },
-    { "name": "Anxiety Disorder", "synonyms": ["Generalized anxiety", "Nervous disorder"] },
-    { "name": "Schizophrenia", "synonyms": ["Psychosis", "Schizo"] },
-    { "name": "Gastroenteritis", "synonyms": ["Stomach flu", "Stomach infection"] },
-    { "name": "Peptic Ulcer", "synonyms": ["Stomach ulcer", "Gastric ulcer"] },
-    { "name": "Appendicitis", "synonyms": ["Appendix infection", "Appendix inflammation"] },
-    { "name": "Gallstones", "synonyms": ["Cholelithiasis", "Gallbladder stones"] },
-    { "name": "Kidney Stones", "synonyms": ["Renal calculi", "Nephrolithiasis"] },
-    { "name": "Urinary Tract Infection", "synonyms": ["UTI", "Bladder infection"] },
-    { "name": "Anemia", "synonyms": ["Low hemoglobin", "Blood deficiency"] },
-    { "name": "Thyroid Disorder", "synonyms": ["Hypothyroidism", "Hyperthyroidism", "Thyroid problem"] },
-    { "name": "Gout", "synonyms": ["Uric acid arthritis", "Gouty arthritis"] },
-    { "name": "Psoriasis", "synonyms": ["Skin disease", "Scaly patches"] },
-    { "name": "Eczema", "synonyms": ["Atopic dermatitis", "Skin rash"] },
-    { "name": "Allergy", "synonyms": ["Hypersensitivity", "Allergic reaction"] },
-    { "name": "Food Poisoning", "synonyms": ["Foodborne illness", "Stomach poisoning"] },
-    { "name": "Heat Stroke", "synonyms": ["Sunstroke", "Heat exhaustion"] },
-    { "name": "Dehydration", "synonyms": ["Water loss", "Fluid deficiency"] },
-    { "name": "Conjunctivitis", "synonyms": ["Pink eye", "Eye flu"] },
-    { "name": "Glaucoma", "synonyms": ["Eye pressure disease", "Optic nerve damage"] },
-    { "name": "Cataract", "synonyms": ["Cloudy lens", "Eye opacity"] }
+    {
+      "name": "Diabetes Mellitus",
+      "synonyms": ["Diabetes", "Sugar disease", "High blood sugar"]
+    },
+    {
+      "name": "Hypertension",
+      "synonyms": ["High blood pressure", "BP", "Hypertensive disease"]
+    },
+    {
+      "name": "Asthma",
+      "synonyms": ["Breathing problem", "Wheezing", "Bronchial asthma"]
+    },
+    {
+      "name": "Tuberculosis",
+      "synonyms": ["TB", "Mycobacterium infection", "Pulmonary tuberculosis"]
+    },
+    {
+      "name": "Influenza",
+      "synonyms": ["Flu", "Grip", "Seasonal flu"]
+    },
+    {
+      "name": "COVID-19",
+      "synonyms": ["Coronavirus", "SARS-CoV-2 infection", "Corona"]
+    },
+    {
+      "name": "Pneumonia",
+      "synonyms": ["Lung infection", "Chest infection", "Pulmonary infection"]
+    },
+    {
+      "name": "Malaria",
+      "synonyms": ["Plasmodium infection", "Malarial fever"]
+    },
+    {
+      "name": "Dengue",
+      "synonyms": ["Breakbone fever", "Dengue fever"]
+    },
+    {
+      "name": "Cholera",
+      "synonyms": ["Vibrio infection", "Severe diarrhea disease"]
+    },
+    {
+      "name": "Hepatitis B",
+      "synonyms": ["HBV infection", "Hep B"]
+    },
+    {
+      "name": "Hepatitis C",
+      "synonyms": ["HCV infection", "Hep C"]
+    },
+    {
+      "name": "HIV/AIDS",
+      "synonyms": ["Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
+    },
+    {
+      "name": "Typhoid",
+      "synonyms": ["Enteric fever", "Salmonella infection"]
+    },
+    {
+      "name": "Measles",
+      "synonyms": ["Rubeola", "Morbilli"]
+    },
+    {
+      "name": "Chickenpox",
+      "synonyms": ["Varicella", "Waterpox"]
+    },
+    {
+      "name": "Leprosy",
+      "synonyms": ["Hansen's disease", "Mycobacterium leprae infection"]
+    },
+    {
+      "name": "Rabies",
+      "synonyms": ["Hydrophobia", "Lyssavirus infection"]
+    },
+    {
+      "name": "Meningitis",
+      "synonyms": ["Brain fever", "Inflammation of meninges"]
+    },
+    {
+      "name": "Arthritis",
+      "synonyms": ["Joint inflammation", "Rheumatic disease"]
+    }
   ]
 }
-
