@@ -1,5 +1,5 @@
 {
-  "diseases": [
+  [
     { "name": "Diabetes Mellitus", "preventions": ["Maintain healthy weight", "Eat balanced diet", "Exercise regularly", "Limit sugar intake"] },
     { "name": "Hypertension", "preventions": ["Reduce salt intake", "Exercise daily", "Avoid smoking and alcohol", "Manage stress"] },
     { "name": "Asthma", "preventions": ["Avoid allergens", "Use prescribed inhalers", "Stay away from smoke", "Maintain clean environment"] },
