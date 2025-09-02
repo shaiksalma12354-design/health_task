@@ -1,5 +1,5 @@
 {
-  "diseases": [
+  [
     { "name": "Diabetes Mellitus", "symptoms": ["Frequent urination", "Excessive thirst", "Fatigue", "Blurred vision"] },
     { "name": "Hypertension", "symptoms": ["Headache", "Dizziness", "Chest pain", "Shortness of breath"] },
     { "name": "Asthma", "symptoms": ["Wheezing", "Shortness of breath", "Coughing", "Chest tightness"] },
