@@ -1,62 +1,82 @@
-{
-  "Malaria": {
-    "synonyms": ["Plasmodium infection", "Mosquito fever"]
+[
+  {
+    "value": "Malaria",
+    "synonyms": ["Malaria", "Plasmodium infection", "Mosquito fever"]
   },
-  "Tuberculosis": {
-    "synonyms": ["TB", "Consumption", "Phthisis"]
+  {
+    "value": "Tuberculosis",
+    "synonyms": ["Tuberculosis", "TB", "Consumption", "Phthisis"]
   },
-  "Diabetes": {
-    "synonyms": ["Diabetes mellitus", "High blood sugar", "Sugar disease"]
+  {
+    "value": "Diabetes",
+    "synonyms": ["Diabetes", "Diabetes mellitus", "High blood sugar", "Sugar disease"]
   },
-  "Hypertension": {
-    "synonyms": ["High blood pressure", "HBP"]
+  {
+    "value": "Hypertension",
+    "synonyms": ["Hypertension", "High blood pressure", "HBP"]
   },
-  "Influenza": {
-    "synonyms": ["Flu", "Grippe"]
+  {
+    "value": "Influenza",
+    "synonyms": ["Influenza", "Flu", "Grippe"]
   },
-  "COVID-19": {
-    "synonyms": ["Coronavirus", "SARS-CoV-2 infection", "Corona virus disease"]
+  {
+    "value": "COVID-19",
+    "synonyms": ["COVID-19", "Coronavirus", "SARS-CoV-2 infection", "Corona virus disease"]
   },
-  "Dengue": {
-    "synonyms": ["Dengue fever", "Breakbone fever"]
+  {
+    "value": "Dengue",
+    "synonyms": ["Dengue", "Dengue fever", "Breakbone fever"]
   },
-  "Cholera": {
-    "synonyms": ["Asiatic cholera", "Vibrio cholerae infection"]
+  {
+    "value": "Cholera",
+    "synonyms": ["Cholera", "Asiatic cholera", "Vibrio cholerae infection"]
   },
-  "Hepatitis B": {
-    "synonyms": ["HBV infection", "Serum hepatitis"]
+  {
+    "value": "Hepatitis B",
+    "synonyms": ["Hepatitis B", "HBV infection", "Serum hepatitis"]
   },
-  "Measles": {
-    "synonyms": ["Rubeola", "Red measles"]
+  {
+    "value": "Measles",
+    "synonyms": ["Measles", "Rubeola", "Red measles"]
   },
-  "Chickenpox": {
-    "synonyms": ["Varicella", "Varicella-zoster virus infection"]
+  {
+    "value": "Chickenpox",
+    "synonyms": ["Chickenpox", "Varicella", "Varicella-zoster virus infection"]
   },
-  "Mumps": {
-    "synonyms": ["Epidemic parotitis"]
+  {
+    "value": "Mumps",
+    "synonyms": ["Mumps", "Epidemic parotitis"]
   },
-  "Polio": {
-    "synonyms": ["Poliomyelitis", "Infantile paralysis"]
+  {
+    "value": "Polio",
+    "synonyms": ["Polio", "Poliomyelitis", "Infantile paralysis"]
   },
-  "Typhoid": {
-    "synonyms": ["Enteric fever", "Salmonella typhi infection"]
+  {
+    "value": "Typhoid",
+    "synonyms": ["Typhoid", "Enteric fever", "Salmonella typhi infection"]
   },
-  "Ebola": {
-    "synonyms": ["Ebola virus disease", "EVD"]
+  {
+    "value": "Ebola",
+    "synonyms": ["Ebola", "Ebola virus disease", "EVD"]
   },
-  "Zika virus": {
-    "synonyms": ["Zika fever"]
+  {
+    "value": "Zika virus",
+    "synonyms": ["Zika virus", "Zika fever"]
   },
-  "HIV/AIDS": {
-    "synonyms": ["Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
+  {
+    "value": "HIV/AIDS",
+    "synonyms": ["HIV/AIDS", "Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
   },
-  "Pneumonia": {
-    "synonyms": ["Lung infection", "Pulmonary infection"]
+  {
+    "value": "Pneumonia",
+    "synonyms": ["Pneumonia", "Lung infection", "Pulmonary infection"]
   },
-  "Asthma": {
-    "synonyms": ["Reactive airway disease", "Bronchial asthma"]
+  {
+    "value": "Asthma",
+    "synonyms": ["Asthma", "Reactive airway disease", "Bronchial asthma"]
   },
-  "Common cold": {
-    "synonyms": ["Cold", "Upper respiratory infection", "URI"]
+  {
+    "value": "Common cold",
+    "synonyms": ["Common cold", "Cold", "Upper respiratory infection", "URI"]
   }
-}
+]
