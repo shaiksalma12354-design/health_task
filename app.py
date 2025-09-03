@@ -4,90 +4,62 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# ---------- GITHUB RAW FILES ----------
+# ---------- GITHUB RAW FILE LINKS ----------
 DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
 PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
 
-# Cache for GitHub JSON to avoid fetching every time
-data_cache = {}
-
-# ================== HELPERS ==================
-def fetch_json(url):
-    """Fetch and cache JSON from GitHub."""diseases_info
-    if url in data_cache:
-        return data_cache[url]
+# ---------- HELPER FUNCTION ----------
+def load_data(url):
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(url)
         response.raise_for_status()
-        data = response.json()
-        data_cache[url] = data
-        return data
+        return response.json()
     except Exception as e:
-        print(f"Error fetching {url}: {e}")
-        return {}
+        return {"error": str(e)}
 
-def find_disease_key(user_input, diseases_data):
-    """Return the disease key matching user input or synonym."""
-    user_input_lower = user_input.lower()
-    for disease, info in diseases_data.items():
-        if disease.lower() == user_input_lower:
-            return disease
-        for syn in info.get("synonyms", []):
-            if syn.lower() == user_input_lower:
-                return disease
-    return None
-
-def get_symptoms(disease_name):
-    """Get symptoms list from symptoms JSON."""
-    data = fetch_json(SYMPTOMS_URL)
-    return data.get(disease_name, [])
-
-def get_preventions(disease_name):
-    """Get prevention list from prevention JSON."""
-    data = fetch_json(PREVENTIONS_URL)
-    return data.get(disease_name, [])
-
-# ================== WEBHOOK ==================
-@app.route("/webhook", methods=["POST"])
+# ---------- WEBHOOK ROUTE ----------
+@app.route('/webhook', methods=['POST'])
 def webhook():
-    try:
-        req = request.get_json(force=True)
-        intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
-        params = req.get("queryResult", {}).get("parameters", {})
+    req = request.get_json(force=True)
+    intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
+    parameters = req.get("queryResult", {}).get("parameters", {})
+    disease = parameters.get("disease_sss", "").lower()
 
-        disease_input = None
-        if params.get("disease_sss"):
-            disease_input = params["disease_sss"]
+    response_text = "Sorry, I could not find any information."
 
-        response_text = "Sorry, I could not find information for that disease."
+    if intent == "diseases_info":
+        data = load_data(DISEASES_URL)
+        if isinstance(data, dict) and "error" in data:
+            response_text = "Error loading diseases data."
+        else:
+            for item in data:
+                if item["name"].lower() == disease or disease in [s.lower() for s in item.get("synonyms", [])]:
+                    response_text = f"Disease: {item['name']}\nSynonyms: {', '.join(item.get('synonyms', []))}"
+                    break
 
-        if disease_input:
-            # Load diseases JSON
-            diseases_data = fetch_json(DISEASES_URL)
-            disease_key = find_disease_key(disease_input, diseases_data)
-            if disease_key:
-                if intent in ["ask_symptoms", "diseases_info"]:
-                    symptoms = get_symptoms(disease_key)
-                    if symptoms:
-                        response_text = f"ðŸ¤’ Symptoms of {disease_key}: {', '.join(symptoms)}."
-                    else:
-                        response_text = f"Sorry, symptoms for {disease_key} are not available."
-                if intent in ["ask_preventions", "diseases_info"]:
-                    preventions = get_preventions(disease_key)
-                    if preventions:
-                        response_text += f"\nðŸ›¡ Prevention measures: {', '.join(preventions)}"
-                    else:
-                        response_text += f"\nPrevention info for {disease_key} is not available."
-            else:
-                response_text = f"Sorry, I do not have information about '{disease_input}'."
+    elif intent == "symptoms_info":
+        data = load_data(SYMPTOMS_URL)
+        if isinstance(data, dict) and "error" in data:
+            response_text = "Error loading symptoms data."
+        else:
+            for item in data:
+                if item["name"].lower() == disease:
+                    response_text = f"Symptoms of {item['name']}: {', '.join(item['symptoms'])}"
+                    break
 
-        return jsonify({"fulfillmentText": response_text})
+    elif intent == "preventions_info":
+        data = load_data(PREVENTIONS_URL)
+        if isinstance(data, dict) and "error" in data:
+            response_text = "Error loading preventions data."
+        else:
+            for item in data:
+                if item["name"].lower() == disease:
+                    response_text = f"Preventions for {item['name']}: {', '.join(item['preventions'])}"
+                    break
 
-    except Exception as e:
-        print("Webhook Error:", e)
-        return jsonify({"fulfillmentText": "Sorry, something went wrong on the server."})
+    return jsonify({"fulfillmentText": response_text})
 
-# ================== MAIN ==================
-if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
