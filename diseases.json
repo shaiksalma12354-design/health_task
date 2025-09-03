@@ -1,82 +1,24 @@
-[
-  {
-    "value": "Malaria",
-    "synonyms": ["Malaria", "Plasmodium infection", "Mosquito fever"]
-  },
-  {
-    "value": "Tuberculosis",
-    "synonyms": ["Tuberculosis", "TB", "Consumption", "Phthisis"]
-  },
-  {
-    "value": "Diabetes",
-    "synonyms": ["Diabetes", "Diabetes mellitus", "High blood sugar", "Sugar disease"]
-  },
-  {
-    "value": "Hypertension",
-    "synonyms": ["Hypertension", "High blood pressure", "HBP"]
-  },
-  {
-    "value": "Influenza",
-    "synonyms": ["Influenza", "Flu", "Grippe"]
-  },
-  {
-    "value": "COVID-19",
-    "synonyms": ["COVID-19", "Coronavirus", "SARS-CoV-2 infection", "Corona virus disease"]
-  },
-  {
-    "value": "Dengue",
-    "synonyms": ["Dengue", "Dengue fever", "Breakbone fever"]
-  },
-  {
-    "value": "Cholera",
-    "synonyms": ["Cholera", "Asiatic cholera", "Vibrio cholerae infection"]
-  },
-  {
-    "value": "Hepatitis B",
-    "synonyms": ["Hepatitis B", "HBV infection", "Serum hepatitis"]
-  },
-  {
-    "value": "Measles",
-    "synonyms": ["Measles", "Rubeola", "Red measles"]
-  },
-  {
-    "value": "Chickenpox",
-    "synonyms": ["Chickenpox", "Varicella", "Varicella-zoster virus infection"]
-  },
-  {
-    "value": "Mumps",
-    "synonyms": ["Mumps", "Epidemic parotitis"]
-  },
-  {
-    "value": "Polio",
-    "synonyms": ["Polio", "Poliomyelitis", "Infantile paralysis"]
-  },
-  {
-    "value": "Typhoid",
-    "synonyms": ["Typhoid", "Enteric fever", "Salmonella typhi infection"]
-  },
-  {
-    "value": "Ebola",
-    "synonyms": ["Ebola", "Ebola virus disease", "EVD"]
-  },
-  {
-    "value": "Zika virus",
-    "synonyms": ["Zika virus", "Zika fever"]
-  },
-  {
-    "value": "HIV/AIDS",
-    "synonyms": ["HIV/AIDS", "Human immunodeficiency virus", "Acquired immunodeficiency syndrome"]
-  },
-  {
-    "value": "Pneumonia",
-    "synonyms": ["Pneumonia", "Lung infection", "Pulmonary infection"]
-  },
-  {
-    "value": "Asthma",
-    "synonyms": ["Asthma", "Reactive airway disease", "Bronchial asthma"]
-  },
-  {
-    "value": "Common cold",
-    "synonyms": ["Common cold", "Cold", "Upper respiratory infection", "URI"]
+{
+  "diseases": {
+    "Malaria": ["Plasmodium infection", "Mosquito fever"],
+    "Tuberculosis": ["TB", "Consumption", "Phthisis"],
+    "Diabetes": ["Diabetes mellitus", "High blood sugar", "Sugar disease"],
+    "Hypertension": ["High blood pressure", "HBP"],
+    "Influenza": ["Flu", "Grippe"],
+    "COVID-19": ["Coronavirus", "SARS-CoV-2 infection", "Corona virus disease"],
+    "Dengue": ["Dengue fever", "Breakbone fever"],
+    "Cholera": ["Asiatic cholera", "Vibrio cholerae infection"],
+    "Hepatitis B": ["HBV infection", "Serum hepatitis"],
+    "Measles": ["Rubeola", "Red measles"],
+    "Chickenpox": ["Varicella", "Varicella-zoster virus infection"],
+    "Mumps": ["Epidemic parotitis"],
+    "Polio": ["Poliomyelitis", "Infantile paralysis"],
+    "Typhoid": ["Enteric fever", "Salmonella typhi infection"],
+    "Ebola": ["Ebola virus disease", "EVD"],
+    "Zika virus": ["Zika fever"],
+    "HIV/AIDS": ["Human immunodeficiency virus", "Acquired immunodeficiency syndrome"],
+    "Pneumonia": ["Lung infection", "Pulmonary infection"],
+    "Asthma": ["Reactive airway disease", "Bronchial asthma"],
+    "Common cold": ["Cold", "Upper respiratory infection", "URI"]
   }
-]
+}
