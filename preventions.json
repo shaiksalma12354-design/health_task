@@ -1,93 +1,122 @@
 {
-  "diseases": [
-    {
-      "name": "Diabetes Mellitus",
-      "preventions": [
-        "Maintain healthy weight",
-        "Eat balanced diet",
-        "Exercise regularly",
-        "Limit sugar intake"
-      ]
-    },
-    {
-      "name": "Hypertension",
-      "preventions": [
-        "Reduce salt intake",
-        "Exercise daily",
-        "Avoid smoking and alcohol",
-        "Manage stress"
-      ]
-    },
-    {
-      "name": "Asthma",
-      "preventions": [
-        "Avoid allergens",
-        "Use prescribed inhalers",
-        "Stay away from smoke",
-        "Maintain clean environment"
-      ]
-    },
-    {
-      "name": "Tuberculosis",
-      "preventions": [
-        "Get BCG vaccine",
-        "Maintain good ventilation",
-        "Cover mouth when coughing",
-        "Complete TB treatment"
-      ]
-    },
-    {
-      "name": "Influenza",
-      "preventions": [
-        "Get flu vaccine",
-        "Wash hands regularly",
-        "Avoid close contact with sick people",
-        "Boost immunity"
-      ]
-    },
-    {
-      "name": "COVID-19",
-      "preventions": [
-        "Wear mask",
-        "Wash hands frequently",
-        "Maintain social distancing",
-        "Get vaccinated"
-      ]
-    },
-    {
-      "name": "Malaria",
-      "preventions": [
-        "Use mosquito nets",
-        "Apply mosquito repellent",
-        "Avoid stagnant water",
-        "Take antimalarial drugs if advised"
-      ]
-    },
-    {
-      "name": "Typhoid fever",
-      "preventions": [
-        "Drink clean water",
-        "Wash hands before eating",
-        "Avoid street food",
-        "Get typhoid vaccine"
-      ]
-    },
-    {
-      "name": "Hepatitis B",
-      "preventions": [
-        "Get vaccinated",
-        "Avoid sharing needles",
-        "Practice safe sex",
-        "Screen blood before transfusion"
-      ]
-    },
-    {
-      "name": "Hepatitis C",
-      "preventions": [
-        "Avoid sharing needles",
-        "Ensure safe blood transfusions",
-        "Practice safe sex",
-        "Regular screening"
-      ]
-    }
+  "diseases": {
+    "Malaria": [
+      "Use insect repellent",
+      "Sleep under mosquito nets",
+      "Take antimalarial medication",
+      "Avoid mosquito-prone areas"
+    ],
+    "Tuberculosis": [
+      "Get BCG vaccination",
+      "Ensure proper ventilation",
+      "Avoid close contact with TB patients",
+      "Complete full course of TB treatment"
+    ],
+    "Diabetes": [
+      "Maintain healthy weight",
+      "Eat balanced diet",
+      "Exercise regularly",
+      "Limit sugar intake"
+    ],
+    "Hypertension": [
+      "Reduce salt intake",
+      "Exercise daily",
+      "Avoid smoking and alcohol",
+      "Manage stress"
+    ],
+    "Influenza": [
+      "Get annual flu vaccine",
+      "Wash hands regularly",
+      "Avoid close contact with sick people",
+      "Maintain good hygiene"
+    ],
+    "COVID-19": [
+      "Get vaccinated",
+      "Wear masks in crowded areas",
+      "Wash hands frequently",
+      "Maintain social distancing"
+    ],
+    "Dengue": [
+      "Prevent mosquito breeding",
+      "Use mosquito repellents",
+      "Wear long-sleeved clothes",
+      "Keep surroundings clean"
+    ],
+    "Cholera": [
+      "Drink safe and clean water",
+      "Maintain good sanitation",
+      "Wash hands with soap",
+      "Eat properly cooked food"
+    ],
+    "Hepatitis B": [
+      "Get Hepatitis B vaccine",
+      "Practice safe sex",
+      "Avoid sharing needles",
+      "Ensure blood safety"
+    ],
+    "Measles": [
+      "Get MMR vaccination",
+      "Maintain good nutrition",
+      "Avoid contact with infected persons"
+    ],
+    "Chickenpox": [
+      "Get varicella vaccination",
+      "Avoid contact with infected people",
+      "Maintain good hygiene"
+    ],
+    "Mumps": [
+      "Get MMR vaccination",
+      "Practice good hygiene",
+      "Avoid close contact with infected individuals"
+    ],
+    "Polio": [
+      "Get polio vaccination",
+      "Maintain hygiene",
+      "Drink safe water"
+    ],
+    "Typhoid": [
+      "Drink clean water",
+      "Eat hygienic food",
+      "Wash hands regularly",
+      "Get typhoid vaccination"
+    ],
+    "Ebola": [
+      "Avoid contact with infected persons",
+      "Wear protective clothing",
+      "Practice safe burial procedures",
+      "Isolate infected patients"
+    ],
+    "Zika virus": [
+      "Prevent mosquito bites",
+      "Use mosquito nets",
+      "Wear protective clothing",
+      "Avoid travel to outbreak areas"
+    ],
+    "HIV/AIDS": [
+      "Practice safe sex",
+      "Avoid sharing needles",
+      "Get regular HIV testing",
+      "Ensure blood safety"
+    ],
+    "Pneumonia": [
+      "Get pneumococcal vaccination",
+      "Maintain good hygiene",
+      "Avoid smoking",
+      "Seek treatment for respiratory infections"
+    ],
+    "Asthma": [
+      "Avoid allergens and triggers",
+      "Use prescribed inhalers",
+      "Maintain healthy lifestyle",
+      "Avoid smoking"
+    ],
+    "Common cold": [
+      "Wash hands regularly",
+      "Avoid close contact with sick people",
+      "Boost immunity with healthy diet",
+      "Maintain good hygiene"
+    ]
+  }
+}
+
   
