@@ -14,7 +14,7 @@ data_cache = {}
 
 # ================== HELPERS ==================
 def fetch_json(url):
-    """Fetch and cache JSON from GitHub."""
+    """Fetch and cache JSON from GitHub."""diseases_info
     if url in data_cache:
         return data_cache[url]
     try:
