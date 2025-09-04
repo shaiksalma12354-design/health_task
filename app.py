@@ -7,7 +7,7 @@ app = Flask(__name__)
 # ---------- GITHUB RAW FILES ----------
 DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = 
-PREVENTIONS_URL = "
+PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
 
 
 # ---------- HELPER FUNCTION ----------
