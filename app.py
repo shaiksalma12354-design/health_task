@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # ---------- GITHUB RAW FILE LINKS ----------
-DISEASES_URL = 
+DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = 
 PREVENTIONS_URL = 
 
