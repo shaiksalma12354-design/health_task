@@ -1,50 +1,57 @@
-import json
 import requests
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# ---------- GITHUB RAW FILES ----------
-DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
-SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
-PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
+# ---------- GITHUB RAW FILE LINKS ----------
+DISEASES_URL = 
+SYMPTOMS_URL = 
+PREVENTIONS_URL = 
 
 
-# ---------- HELPER FUNCTION ----------
-def load_json_from_github(url):
+# ---------- Helper to fetch JSON ----------
+def load_json(url):
     try:
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
-    except Exception:
+    except Exception as e:
         return {}
 
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
     req = request.get_json(force=True)
-    intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
 
-    # Load data
-    diseases = load_json_from_github(DISEASES_URL)
-    symptoms = load_json_from_github(SYMPTOMS_URL)
-    preventions = load_json_from_github(PREVENTIONS_URL)  # not used now
+    intent = req.get("queryResult", {}).get("intent", {}).get("displayName")
+    parameters = req.get("queryResult", {}).get("parameters", {})
 
-    reply_text = "Sorry, I could not find information."
+    # Load JSON files
+    diseases_data = load_json(DISEASES_URL)
+    symptoms_data = load_json(SYMPTOMS_URL)
+    preventions_data = load_json(PREVENTIONS_URL)
+
+    reply_text = "Sorry, I could not find the information."
 
     if intent == "diseases_info":
-        parameters = req.get("queryResult", {}).get("parameters", {})
-        disease_name = parameters.get("disease_sss", "")
+        disease = parameters.get("diseases_sss")
+        symptom = parameters.get("symptoms")
 
-        if disease_name:
-            disease_name = disease_name.strip()
+        # If disease is asked, return its symptoms
+        if disease:
+            for item in symptoms_data.get("symptoms", []):
+                if item["name"].lower() == disease.lower():
+                    reply_text = f"Symptoms of {disease}: {', '.join(item['symptoms'])}"
+                    break
 
-            # ✅ Check disease exists in both diseases.json AND symptoms.json
-            if disease_name in diseases and disease_name in symptoms:
-                disease_symptoms = symptoms[disease_name]
-                reply_text = f"Symptoms of {disease_name}: {', '.join(disease_symptoms)}"
-            else:
-                reply_text = f"Sorry, I don’t have symptoms for {disease_name}."
+        # If symptom is asked, return possible diseases
+        elif symptom:
+            matching_diseases = []
+            for item in symptoms_data.get("symptoms", []):
+                if symptom.lower() in [s.lower() for s in item["symptoms"]]:
+                    matching_diseases.append(item["name"])
+            if matching_diseases:
+                reply_text = f"Diseases with symptom '{symptom}': {', '.join(matching_diseases)}"
 
     return jsonify({"fulfillmentText": reply_text})
 
