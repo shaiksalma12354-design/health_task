@@ -4,54 +4,73 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# ---------- GITHUB RAW FILES ----------
-DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
 PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
+DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 
 
 def load_data(url):
-    """Fetch JSON data from GitHub raw link"""
     try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
+        res = requests.get(url)
+        res.raise_for_status()
+        return res.json()
     except Exception as e:
         print(f"Error loading {url}: {e}")
         return {}
 
 
+def find_in_dict(data, disease):
+    if not isinstance(data, dict):
+        return []
+    if disease in data:
+        return data[disease]
+    for key in data.keys():
+        if key.lower() == disease.lower():
+            return data[key]
+    return []
+
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    req = request.get_json(silent=True, force=True)
-    
-    # Get intent name
-    intent = req.get("queryResult", {}).get("intent", {}).get("displayName")
-    
-    # Process only diseases_info intent
+    req = request.get_json(force=True)
+
+    intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
+
     if intent == "diseases_info":
-        # Extract disease entity
-        disease = req.get("queryResult", {}).get("parameters", {}).get("disease_sss", "").lower()
-        
+        # Handle array or string for entity
+        disease_param = req.get("queryResult", {}).get("parameters", {}).get("disease_sss", "")
+        if isinstance(disease_param, list) and disease_param:
+            disease = disease_param[0]
+        elif isinstance(disease_param, str):
+            disease = disease_param
+        else:
+            disease = ""
+
         if not disease:
             return jsonify({"fulfillmentText": "Please provide a disease name."})
 
-        # Load JSON data from GitHub
-        diseases_data = load_data(DISEASES_URL)
+        # Load files
         symptoms_data = load_data(SYMPTOMS_URL)
         preventions_data = load_data(PREVENTIONS_URL)
+        diseases_data = load_data(DISEASES_URL)
 
-        response_text = f"Here is the information I found for **{disease.title()}**:\n\n"
+        # Build response
+        response_text = f"Here is the information I found for **{disease}**:\n\n"
+
+        # Synonyms
+        synonyms = find_in_dict(diseases_data, disease)
+        if synonyms:
+            response_text += "🔍 **Also known as:** " + ", ".join(synonyms) + "\n"
 
         # Symptoms
-        symptoms = symptoms_data.get(disease, [])
+        symptoms = find_in_dict(symptoms_data, disease)
         if symptoms:
             response_text += "🩺 **Symptoms:** " + ", ".join(symptoms) + "\n"
         else:
             response_text += "🩺 Symptoms: Not available.\n"
 
         # Preventions
-        preventions = preventions_data.get(disease, [])
+        preventions = find_in_dict(preventions_data, disease)
         if preventions:
             response_text += "✅ **Preventions:** " + ", ".join(preventions) + "\n"
         else:
@@ -59,8 +78,7 @@ def webhook():
 
         return jsonify({"fulfillmentText": response_text})
 
-    # Default fallback
-    return jsonify({"fulfillmentText": "Sorry, I couldn't process that request."})
+    return jsonify({"fulfillmentText": "Intent not handled."})
 
 
 if __name__ == "__main__":
