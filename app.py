@@ -31,7 +31,7 @@ def webhook():
     symptoms_data = load_json(SYMPTOMS_URL)
     preventions_data = load_json(PREVENTIONS_URL)
 
-    reply_text = "Sorry, I could not find the information."
+   // reply_text = "Sorry, I could not find the information."
 
     if intent == "diseases_info":
         disease = parameters.get("diseases_sss")
