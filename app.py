@@ -1,59 +1,66 @@
+import json
 import requests
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# ---------- GITHUB RAW FILE LINKS ----------
+# ---------- GITHUB RAW FILES ----------
 DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
 SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
 PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
 
 
-# ---------- Helper to fetch JSON ----------
-def load_json(url):
+def load_data(url):
+    """Fetch JSON data from GitHub raw link"""
     try:
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
     except Exception as e:
+        print(f"Error loading {url}: {e}")
         return {}
 
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    req = request.get_json(force=True)
-
+    req = request.get_json(silent=True, force=True)
+    
+    # Get intent name
     intent = req.get("queryResult", {}).get("intent", {}).get("displayName")
-    parameters = req.get("queryResult", {}).get("parameters", {})
-
-    # Load JSON files
-    diseases_data = load_json(DISEASES_URL)
-    symptoms_data = load_json(SYMPTOMS_URL)
-    preventions_data = load_json(PREVENTIONS_URL)
-
-   // reply_text = "Sorry, I could not find the information."
-
+    
+    # Process only diseases_info intent
     if intent == "diseases_info":
-        disease = parameters.get("diseases_sss")
-        symptom = parameters.get("symptoms")
+        # Extract disease entity
+        disease = req.get("queryResult", {}).get("parameters", {}).get("disease_sss", "").lower()
+        
+        if not disease:
+            return jsonify({"fulfillmentText": "Please provide a disease name."})
 
-        # If disease is asked, return its symptoms
-        if disease:
-            for item in symptoms_data.get("symptoms", []):
-                if item["name"].lower() == disease.lower():
-                    reply_text = f"Symptoms of {disease}: {', '.join(item['symptoms'])}"
-                    break
+        # Load JSON data from GitHub
+        diseases_data = load_data(DISEASES_URL)
+        symptoms_data = load_data(SYMPTOMS_URL)
+        preventions_data = load_data(PREVENTIONS_URL)
 
-        # If symptom is asked, return possible diseases
-        elif symptom:
-            matching_diseases = []
-            for item in symptoms_data.get("symptoms", []):
-                if symptom.lower() in [s.lower() for s in item["symptoms"]]:
-                    matching_diseases.append(item["name"])
-            if matching_diseases:
-                reply_text = f"Diseases with symptom '{symptom}': {', '.join(matching_diseases)}"
+        response_text = f"Here is the information I found for **{disease.title()}**:\n\n"
 
-    return jsonify({"fulfillmentText": reply_text})
+        # Symptoms
+        symptoms = symptoms_data.get(disease, [])
+        if symptoms:
+            response_text += "🩺 **Symptoms:** " + ", ".join(symptoms) + "\n"
+        else:
+            response_text += "🩺 Symptoms: Not available.\n"
+
+        # Preventions
+        preventions = preventions_data.get(disease, [])
+        if preventions:
+            response_text += "✅ **Preventions:** " + ", ".join(preventions) + "\n"
+        else:
+            response_text += "✅ Preventions: Not available.\n"
+
+        return jsonify({"fulfillmentText": response_text})
+
+    # Default fallback
+    return jsonify({"fulfillmentText": "Sorry, I couldn't process that request."})
 
 
 if __name__ == "__main__":
