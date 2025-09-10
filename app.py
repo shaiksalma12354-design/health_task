@@ -81,139 +81,21 @@
 #     return jsonify({"fulfillmentText": "Intent not handled."})
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
 
-# import json
-# import requests
-# from flask import Flask, request, jsonify
-
-# app = Flask(__name__)
-
-# # ---------- GITHUB RAW FILES ----------
-# DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
-# SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
-# PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
-
-# # ---------- LOAD JSON DATA ----------
-# def load_json(url):
-#     try:
-#         response = requests.get(url)
-#         if response.status_code == 200:
-#             return response.json()
-#     except Exception as e:
-#         print(f"Error loading {url}: {e}")
-#     return {}
-
-# diseases_data = load_json(DISEASES_URL)
-# symptoms_data = load_json(SYMPTOMS_URL)
-# preventions_data = load_json(PREVENTIONS_URL)
-
-# # ---------- WEBHOOK ----------
-# @app.route("/webhook", methods=["POST"])
-# def webhook():
-#     req = request.get_json(silent=True, force=True)
-
-#     intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
-#     params = req.get("queryResult", {}).get("parameters", {})
-#     disease_param = params.get("disease_sss", [])
-
-#     # normalize disease parameter
-#     disease = None
-#     valid_diseases = list(symptoms_data.keys())
-
-#     if isinstance(disease_param, list):
-#         for item in disease_param:
-#             if item in valid_diseases:
-#                 disease = item
-#                 break
-#     elif isinstance(disease_param, str) and disease_param in valid_diseases:
-#         disease = disease_param
-
-#     response_text = "Sorry, I couldn't find information for that disease."
-
-#     if intent == "diseases_info" and disease:
-#         # Check symptoms first
-#         if disease in symptoms_data:
-#             symptoms = ", ".join(symptoms_data[disease])
-#             response_text = f"The symptoms of {disease} are: {symptoms}."
-#         # Optionally add preventions
-#         elif disease in preventions_data:
-#             preventions = ", ".join(preventions_data[disease])
-#             response_text = f"The preventions for {disease} are: {preventions}."
-
-#     return jsonify({"fulfillmentText": response_text})
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-# import json
-# import requests
-# from flask import Flask, request, jsonify
-
-# app = Flask(__name__)
-
-# # ---------- GITHUB RAW FILES ----------
-# DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
-# SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
-# PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
-
-# # ---------- LOAD JSON DATA ----------
-# def load_json(url):
-#     try:
-#         response = requests.get(url)
-#         if response.status_code == 200:
-#             return response.json()
-#     except Exception as e:
-#         print(f"Error loading {url}: {e}")
-#     return {}
-
-# diseases_data = load_json(DISEASES_URL)
-# symptoms_data = load_json(SYMPTOMS_URL)
-# preventions_data = load_json(PREVENTIONS_URL)
-
-# valid_diseases = set(symptoms_data.keys()) | set(preventions_data.keys())
-
-# # ---------- WEBHOOK ----------
-# @app.route("/webhook", methods=["POST"])
-# def webhook():
-#     req = request.get_json(silent=True, force=True)
-
-#     intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
-#     params = req.get("queryResult", {}).get("parameters", {})
-#     disease_param = params.get("disease_sss", [])
-
-#     disease = None
-
-#     # --- strict validation ---
-#     if isinstance(disease_param, list):
-#         for item in disease_param:
-#             if item in valid_diseases:
-#                 disease = item
-#                 break
-#     elif isinstance(disease_param, str) and disease_param in valid_diseases:
-#         disease = disease_param
-
-#     response_text = "Sorry, I couldn't find information for that disease."
-
-#     if intent == "diseases_info" and disease:
-#         if disease in symptoms_data:
-#             symptoms = ", ".join(symptoms_data[disease])
-#             response_text = f"The symptoms of {disease} are: {symptoms}."
-#         elif disease in preventions_data:
-#             preventions = ", ".join(preventions_data[disease])
-#             response_text = f"The preventions for {disease} are: {preventions}."
-
-#     return jsonify({"fulfillmentText": response_text})
-
-
-from flask import Flask, request, jsonify
+import json
 import requests
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Load JSON data from GitHub or local files
+# ---------- GITHUB RAW FILES ----------
+DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
+SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
+PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
+
+# ---------- LOAD JSON DATA ----------
 def load_json(url):
     try:
         response = requests.get(url)
@@ -223,64 +105,109 @@ def load_json(url):
         print(f"Error loading {url}: {e}")
     return {}
 
-# Replace with your GitHub raw file URLs
-DISEASES_URL = "https://raw.githubusercontent.com/your-repo/diseases.json"
-SYMPTOMS_URL = "https://raw.githubusercontent.com/your-repo/symptoms.json"
-PREVENTIONS_URL = "https://raw.githubusercontent.com/your-repo/preventions.json"
+diseases_data = load_json(DISEASES_URL)
+symptoms_data = load_json(SYMPTOMS_URL)
+preventions_data = load_json(PREVENTIONS_URL)
+
+# ---------- WEBHOOK ----------
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    req = request.get_json(silent=True, force=True)
+
+    intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
+    params = req.get("queryResult", {}).get("parameters", {})
+    disease_param = params.get("disease_sss", [])
+
+    # normalize disease parameter
+    disease = None
+    valid_diseases = list(symptoms_data.keys())
+
+    if isinstance(disease_param, list):
+        for item in disease_param:
+            if item in valid_diseases:
+                disease = item
+                break
+    elif isinstance(disease_param, str) and disease_param in valid_diseases:
+        disease = disease_param
+
+    response_text = "Sorry, I couldn't find information for that disease."
+
+    if intent == "diseases_info" and disease:
+        # Check symptoms first
+        if disease in symptoms_data:
+            symptoms = ", ".join(symptoms_data[disease])
+            response_text = f"The symptoms of {disease} are: {symptoms}."
+        # Optionally add preventions
+        elif disease in preventions_data:
+            preventions = ", ".join(preventions_data[disease])
+            response_text = f"The preventions for {disease} are: {preventions}."
+
+    return jsonify({"fulfillmentText": response_text})
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+import json
+import requests
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# ---------- GITHUB RAW FILES ----------
+DISEASES_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/diseases.json"
+SYMPTOMS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/symptoms.json"
+PREVENTIONS_URL = "https://raw.githubusercontent.com/shaiksalma12354-design/health_task/main/preventions.json"
+
+# ---------- LOAD JSON DATA ----------
+def load_json(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json()
+    except Exception as e:
+        print(f"Error loading {url}: {e}")
+    return {}
 
 diseases_data = load_json(DISEASES_URL)
 symptoms_data = load_json(SYMPTOMS_URL)
 preventions_data = load_json(PREVENTIONS_URL)
 
+valid_diseases = set(symptoms_data.keys()) | set(preventions_data.keys())
 
-@app.route('/webhook', methods=['POST'])
+# ---------- WEBHOOK ----------
+@app.route("/webhook", methods=["POST"])
 def webhook():
-    req = request.get_json(force=True)
-    intent = req.get("queryResult", {}).get("intent", {}).get("displayName")
+    req = request.get_json(silent=True, force=True)
 
-    if intent == "diseases_info":
-        params = req.get("queryResult", {}).get("parameters", {})
-        disease = params.get("disease_sss")
-        user_symptoms = params.get("symptoms")
+    intent = req.get("queryResult", {}).get("intent", {}).get("displayName", "")
+    params = req.get("queryResult", {}).get("parameters", {})
+    disease_param = params.get("disease_sss", [])
 
-        response_text = "I couldn’t find relevant information."
+    disease = None
 
-        # Case 1: Disease → Symptoms
-        if disease:
-            for item in symptoms_data.get("symptoms", []):
-                if item["disease"].lower() == disease.lower():
-                    response_text = f"The symptoms of {disease} are: {', '.join(item['symptoms'])}."
-                    break
+    # --- strict validation ---
+    if isinstance(disease_param, list):
+        for item in disease_param:
+            if item in valid_diseases:
+                disease = item
+                break
+    elif isinstance(disease_param, str) and disease_param in valid_diseases:
+        disease = disease_param
 
-        # Case 2: Symptom(s) → Diseases
-        elif user_symptoms:
-            if isinstance(user_symptoms, str):
-                user_symptoms = [user_symptoms]  # make it a list if single symptom
+    response_text = "Sorry, I couldn't find information for that disease."
 
-            possible_diseases = []
-            for item in symptoms_data.get("symptoms", []):
-                disease_symptoms = [s.lower() for s in item["symptoms"]]
-                if all(sym.lower() in disease_symptoms for sym in user_symptoms):
-                    possible_diseases.append(item["disease"])
+    if intent == "diseases_info" and disease:
+        if disease in symptoms_data:
+            symptoms = ", ".join(symptoms_data[disease])
+            response_text = f"The symptoms of {disease} are: {symptoms}."
+        elif disease in preventions_data:
+            preventions = ", ".join(preventions_data[disease])
+            response_text = f"The preventions for {disease} are: {preventions}."
 
-            if possible_diseases:
-                response_text = (
-                    f"The symptom(s) {', '.join(user_symptoms)} "
-                    f"may be related to: {', '.join(possible_diseases)}."
-                )
-            else:
-                response_text = (
-                    f"Sorry, I could not find any diseases related to the given symptoms: "
-                    f"{', '.join(user_symptoms)}."
-                )
-
-        return jsonify({"fulfillmentText": response_text})
-
-    return jsonify({"fulfillmentText": "No matching intent found."})
+    return jsonify({"fulfillmentText": response_text})
 
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)
 
 
 
